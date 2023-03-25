@@ -12,6 +12,7 @@ public class CharacterController : MonoBehaviour
     //private Animator anim; // Character animator component
     private bool isGrounded; // Flag indicating if character is on ground
     private bool isSprinting = false;
+    private int currentRoom = 0;
 
     private void Start()
     {
@@ -30,6 +31,9 @@ public class CharacterController : MonoBehaviour
             transform.localScale = new Vector2(1, 1);
         else if (horizontalInput < 0)
             transform.localScale = new Vector2(-1, 1);
+
+        if(transform.position.y <= -10)
+            transform.position = new Vector3(currentRoom == 0 ? -10 : 20, -3.5f, 0);
     }
 
     private void Update()
@@ -47,5 +51,10 @@ public class CharacterController : MonoBehaviour
         // Update animator parameters
         //anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
         //anim.SetBool("IsGrounded", isGrounded);
+    }
+
+    public void ChangeCurrentRoom(int newRoom)
+    {
+        currentRoom = newRoom;
     }
 }

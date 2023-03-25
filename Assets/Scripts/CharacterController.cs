@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class CharacterController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f; // Player move speed
-    [SerializeField] private float jumpForce = 10f; // Player jump force
+    [SerializeField] private float moveSpeed = 5f; // Character move speed
+    [SerializeField] private float jumpForce = 10f; // Character jump force
     [SerializeField] private LayerMask groundLayer; // Layer mask for ground objects
-    [SerializeField] private Transform groundCheck; // Transform object for checking if player is on ground
+    [SerializeField] private Transform groundCheck; // Transform object for checking if character is on ground
 
-    private Rigidbody2D rb; // Player rigidbody component
-    private Animator anim; // Player animator component
-    private bool isGrounded; // Flag indicating if player is on ground
+    private Rigidbody2D rb; // Character rigidbody component
+    private Animator anim; // Character animator component
+    private bool isGrounded; // Flag indicating if character is on ground
 
     private void Start()
     {
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
 
-        // Flip player sprite if moving in opposite direction
+        // Flip character sprite if moving in opposite direction
         if (horizontalInput > 0)
             transform.localScale = new Vector2(1, 1);
         else if (horizontalInput < 0)
@@ -32,10 +32,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // Check if player is on ground
+        // Check if character is on ground
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
 
-        // Player jump input
+        // Character jump input
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);

@@ -51,12 +51,12 @@ public class CharacterController : MonoBehaviour
 
         if(heldItem != null && horizontalInput > 0)
         {
-            heldItem.transform.position = transform.position + new Vector3(1, 0.5f, 0);
+            heldItem.transform.position = transform.position + new Vector3(.3f, 0, 0);
             heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         }
         else if(heldItem != null && horizontalInput < 0)
         {
-            heldItem.transform.position = transform.position + new Vector3(-1, 0.5f, 0);
+            heldItem.transform.position = transform.position + new Vector3(-.3f, 0, 0);
             heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }

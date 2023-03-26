@@ -17,7 +17,7 @@ public class GrabableObject : MonoBehaviour
 
     void Update()
     {
-        tryGrab = Input.GetKey(KeyCode.F);
+        tryGrab = Input.GetKeyDown(KeyCode.F);
     }
 
     void OnTriggerStay2D(Collider2D other)

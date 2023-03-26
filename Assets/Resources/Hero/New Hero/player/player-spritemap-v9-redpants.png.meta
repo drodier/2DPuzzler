@@ -1,0 +1,738 @@
+fileFormatVersion: 2
+guid: dac259b44bfa9b346a66793229c1162f
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 150
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f24de55d57ded14f80eb4a47c868829
+      internalID: -914972316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_1
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 150
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9bf4198d172fb5418df6bb679894ad1
+      internalID: -871133541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_2
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 150
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01f9669a23b3dbc4e84d51920419f261
+      internalID: -1207878364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_3
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 150
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f52f617c872585840a035df9e5128221
+      internalID: 1897163037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_4
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 150
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c91d90dfa64aa254c9232e33481ced09
+      internalID: -410736722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_5
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 150
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 018f0873a53047f4596eafabe86351f3
+      internalID: 768429989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_6
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 150
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb3fb6e610856054ea9a2e12e8fc9ab5
+      internalID: 1937566805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_7
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 150
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a24216e7488ab834396dc094730499f2
+      internalID: 393520238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 551522240648c7e48baa2c188f45dacd
+      internalID: 219666809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_9
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 100
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 339f6f10f39bad54a84aad5bd481c177
+      internalID: 416409815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_10
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 100
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e33cb7986216c34d908278a818bcdf7
+      internalID: -2121387974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_11
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 100
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d8056ee8dc2081489df2d1e2d341bac
+      internalID: 453279498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_12
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 100
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 829669c658b96c54aa82304e5a2f428e
+      internalID: 219616258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_13
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 100
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 023e447e28904e34986f5a9fecab4688
+      internalID: 1016942809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7643fad1adb492846aac3496689f41b1
+      internalID: -565500087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_15
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 50
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a5f152a6343ea3418c81fad7fcf7632
+      internalID: -581368306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_16
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 50
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43fc7c727c1c1d74eb06ecdf5dfdd904
+      internalID: -1494351696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_17
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 50
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb3523d003686814483f060a8bba88c6
+      internalID: -2115164182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_18
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 50
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c391da2a9c387464a97d8b8ef7d16c15
+      internalID: 2141258656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_19
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 50
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 966ddf950bc0a244aa47e7f042dbc3a6
+      internalID: 680185899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e64b1dafb89acc74e961d2b66d41c71e
+      internalID: -1699461011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_21
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 0
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57805715b142245459eeae381a67c0e2
+      internalID: 1076284586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_22
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 0
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34ac5999ad069514191b2fd43feeaf94
+      internalID: -1244747621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_23
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 0
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe94271b45dd3a14fbc8b02ef9703afc
+      internalID: -330123333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_24
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 0
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eecdf207354ecb248af97202865e8c9f
+      internalID: 1496853629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_25
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 0
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5c32b6b17e13c4448830ffcdbf3a27e
+      internalID: -7193957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_26
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 0
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f608597e3a74af345aca75bd18658970
+      internalID: -35018528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-spritemap-v9-redpants_27
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 0
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84f0201a907edcc469fa14f9d417073e
+      internalID: -1786147534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      player-spritemap-v9-redpants_16: -1494351696
+      player-spritemap-v9-redpants_0: -914972316
+      player-spritemap-v9-redpants_18: 2141258656
+      player-spritemap-v9-redpants_13: 1016942809
+      player-spritemap-v9-redpants_2: -1207878364
+      player-spritemap-v9-redpants_26: -35018528
+      player-spritemap-v9-redpants_27: -1786147534
+      player-spritemap-v9-redpants_8: 219666809
+      player-spritemap-v9-redpants_9: 416409815
+      player-spritemap-v9-redpants_5: 768429989
+      player-spritemap-v9-redpants_14: -565500087
+      player-spritemap-v9-redpants_23: -330123333
+      player-spritemap-v9-redpants_6: 1937566805
+      player-spritemap-v9-redpants_3: 1897163037
+      player-spritemap-v9-redpants_15: -581368306
+      player-spritemap-v9-redpants_22: -1244747621
+      player-spritemap-v9-redpants_21: 1076284586
+      player-spritemap-v9-redpants_25: -7193957
+      player-spritemap-v9-redpants_12: 219616258
+      player-spritemap-v9-redpants_1: -871133541
+      player-spritemap-v9-redpants_20: -1699461011
+      player-spritemap-v9-redpants_10: -2121387974
+      player-spritemap-v9-redpants_19: 680185899
+      player-spritemap-v9-redpants_7: 393520238
+      player-spritemap-v9-redpants_24: 1496853629
+      player-spritemap-v9-redpants_4: -410736722
+      player-spritemap-v9-redpants_17: -2115164182
+      player-spritemap-v9-redpants_11: 453279498
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

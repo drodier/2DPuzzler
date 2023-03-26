@@ -9,15 +9,17 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private Transform groundCheck; // Transform object for checking if character is on ground
 
     private Rigidbody2D rb; // Character rigidbody component
-    //private Animator anim; // Character animator component
+    private Animator anim; // Character animator component
     private bool isGrounded; // Flag indicating if character is on ground
     private bool isSprinting = false;
+    private bool isMoving = false;
+    private bool isFalling = false;
     private int currentRoom = 0;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -34,6 +36,18 @@ public class CharacterController : MonoBehaviour
 
         if(transform.position.y <= -10)
             transform.position = new Vector3(currentRoom == 0 ? -10 : 20, -3.5f, 0);
+
+        // Check if character sprite is moving horizontally
+        isMoving = Mathf.Abs(rb.velocity.x) > 0;
+
+        bool falling = (rb.velocity.y < 0);
+        if (falling != isFalling)
+        {
+
+            isFalling = falling;
+            anim.SetBool("IsFalling", isFalling);
+            }
+
     }
 
     private void Update()
@@ -49,8 +63,8 @@ public class CharacterController : MonoBehaviour
         }
 
         // Update animator parameters
-        //anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
-        //anim.SetBool("IsGrounded", isGrounded);
+        anim.SetBool("IsMoving", isMoving);
+        anim.SetBool("IsGrounded", isGrounded);
     }
 
     public void ChangeCurrentRoom(int newRoom)

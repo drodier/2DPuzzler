@@ -13,6 +13,7 @@ public class CharacterController : MonoBehaviour
     private bool isGrounded; // Flag indicating if character is on ground
     private bool isSprinting = false;
     private int currentRoom = 0;
+    private GrabableObject heldItem = null;
 
     private void Start()
     {
@@ -34,6 +35,17 @@ public class CharacterController : MonoBehaviour
 
         if(transform.position.y <= -10)
             transform.position = new Vector3(currentRoom == 0 ? -10 : 20, -3.5f, 0);
+
+        if(heldItem != null && horizontalInput > 0)
+        {
+            heldItem.transform.position = transform.position + new Vector3(1, 0.5f, 0);
+            heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else if(heldItem != null && horizontalInput < 0)
+        {
+            heldItem.transform.position = transform.position + new Vector3(-1, 0.5f, 0);
+            heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        }
     }
 
     private void Update()
@@ -44,9 +56,10 @@ public class CharacterController : MonoBehaviour
 
         // Character jump input
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        }
+
+        if(Input.GetKeyDown(KeyCode.F) && IsHolding())
+            DropItem();
 
         // Update animator parameters
         //anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
@@ -56,5 +69,28 @@ public class CharacterController : MonoBehaviour
     public void ChangeCurrentRoom(int newRoom)
     {
         currentRoom = newRoom;
+    }
+
+    public void PickUpItem(GrabableObject item)
+    {
+        if(!IsHolding())
+        {
+            heldItem = item;
+            heldItem.StartLockout();
+        }
+    }
+
+    public void DropItem()
+    {
+        if(!heldItem.IsLockedOut())
+        {
+            heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            heldItem = null;
+        }
+    }
+
+    public bool IsHolding()
+    {
+        return heldItem != null;
     }
 }

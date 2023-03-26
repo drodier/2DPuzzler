@@ -15,6 +15,7 @@ public class CharacterController : MonoBehaviour
     private bool isMoving = false;
     private bool isFalling = false;
     private int currentRoom = 0;
+    private GrabableObject heldItem = null;
 
     private void Start()
     {
@@ -48,6 +49,16 @@ public class CharacterController : MonoBehaviour
             anim.SetBool("IsFalling", isFalling);
             }
 
+        if(heldItem != null && horizontalInput > 0)
+        {
+            heldItem.transform.position = transform.position + new Vector3(1, 0.5f, 0);
+            heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else if(heldItem != null && horizontalInput < 0)
+        {
+            heldItem.transform.position = transform.position + new Vector3(-1, 0.5f, 0);
+            heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        }
     }
 
     private void Update()
@@ -58,9 +69,10 @@ public class CharacterController : MonoBehaviour
 
         // Character jump input
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        }
+
+        if(Input.GetKeyDown(KeyCode.F) && IsHolding())
+            DropItem();
 
         // Update animator parameters
         anim.SetBool("IsMoving", isMoving);
@@ -70,5 +82,28 @@ public class CharacterController : MonoBehaviour
     public void ChangeCurrentRoom(int newRoom)
     {
         currentRoom = newRoom;
+    }
+
+    public void PickUpItem(GrabableObject item)
+    {
+        if(!IsHolding())
+        {
+            heldItem = item;
+            heldItem.StartLockout();
+        }
+    }
+
+    public void DropItem()
+    {
+        if(!heldItem.IsLockedOut())
+        {
+            heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            heldItem = null;
+        }
+    }
+
+    public bool IsHolding()
+    {
+        return heldItem != null;
     }
 }

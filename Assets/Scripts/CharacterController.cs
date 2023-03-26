@@ -49,15 +49,19 @@ public class CharacterController : MonoBehaviour
             anim.SetBool("IsFalling", isFalling);
             }
 
-        if(heldItem != null && horizontalInput > 0)
+        if(heldItem != null)
         {
-            heldItem.transform.position = transform.position + new Vector3(.3f, 0, 0);
-            heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-        }
-        else if(heldItem != null && horizontalInput < 0)
-        {
-            heldItem.transform.position = transform.position + new Vector3(-.3f, 0, 0);
-            heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            if(transform.localScale.x == 1)
+            {
+                heldItem.transform.position = transform.position + new Vector3(.3f, 0, 0);
+                heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            }
+            else
+            {
+                heldItem.transform.position = transform.position + new Vector3(-.3f, 0, 0);
+                heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            }
+
         }
     }
 
@@ -71,7 +75,7 @@ public class CharacterController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
-        if(Input.GetKeyDown(KeyCode.F) && IsHolding())
+        if(Input.GetKeyUp(KeyCode.F) && IsHolding())
             DropItem();
 
         // Update animator parameters

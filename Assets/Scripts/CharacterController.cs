@@ -5,6 +5,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f; // Character move speed
     [SerializeField] private float jumpForce = 10f; // Character jump force
     [SerializeField] private float sprintSpeed = 2f;
+    [SerializeField] private float wallJumpForce = 10f; // Character wall jump force
     [SerializeField] private LayerMask groundLayer; // Layer mask for ground objects
     [SerializeField] private Transform groundCheck; // Transform object for checking if character is on ground
 
@@ -69,11 +70,23 @@ public class CharacterController : MonoBehaviour
     {
         // Check if character is on ground
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+        bool isTouchingWall = Physics2D.Raycast(transform.position, transform.right, 0.5f, groundLayer) || Physics2D.Raycast(transform.position, -transform.right, 0.5f, groundLayer);
         isSprinting = isGrounded ? Input.GetKey(KeyCode.LeftShift) : false;
 
         // Character jump input
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+       if (Input.GetKeyDown(KeyCode.Space))
+        {
+         if (isGrounded)
+         {
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+    }
+         else if (isTouchingWall)
+    {
+        float wallJumpDirection = transform.localScale.x > 0 ? -1 : 1; // determine which direction to jump off the wall
+        rb.velocity = new Vector2(wallJumpDirection * wallJumpForce, jumpForce);
+    }
+}
+
 
         if(Input.GetKeyUp(KeyCode.F) && IsHolding())
             DropItem();

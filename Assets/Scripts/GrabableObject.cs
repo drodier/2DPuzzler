@@ -5,7 +5,6 @@ using UnityEngine;
 public class GrabableObject : MonoBehaviour
 {
     [SerializeField] private int pickupLockout = 10;
-    private bool tryGrab = false;
     private int timeHeld = 0;
     private bool isLockedOut = false;
     private CharacterController player;
@@ -15,14 +14,9 @@ public class GrabableObject : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<CharacterController>();
     }
 
-    void Update()
-    {
-        tryGrab = Input.GetKey(KeyCode.F);
-    }
-
     void OnTriggerStay2D(Collider2D other)
     {
-        if(other.gameObject.name == "GrabCheck" && tryGrab)
+        if(other.gameObject.name == "GrabCheck" && Input.GetKey(KeyCode.F))
         {
             player.PickUpItem(this);
         }

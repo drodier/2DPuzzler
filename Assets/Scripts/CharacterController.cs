@@ -9,16 +9,18 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private Transform groundCheck; // Transform object for checking if character is on ground
 
     private Rigidbody2D rb; // Character rigidbody component
-    //private Animator anim; // Character animator component
+    private Animator anim; // Character animator component
     private bool isGrounded; // Flag indicating if character is on ground
     private bool isSprinting = false;
+    private bool isMoving = false;
+    private bool isFalling = false;
     private int currentRoom = 0;
     private GrabableObject heldItem = null;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -36,15 +38,30 @@ public class CharacterController : MonoBehaviour
         if(transform.position.y <= -10)
             transform.position = new Vector3(currentRoom == 0 ? -10 : 20, -3.5f, 0);
 
-        if(heldItem != null && horizontalInput > 0)
+        // Check if character sprite is moving horizontally
+        isMoving = Mathf.Abs(rb.velocity.x) > 0;
+
+        bool falling = (rb.velocity.y < 0);
+        if (falling != isFalling)
         {
-            heldItem.transform.position = transform.position + new Vector3(1, 0.5f, 0);
-            heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-        }
-        else if(heldItem != null && horizontalInput < 0)
+
+            isFalling = falling;
+            anim.SetBool("IsFalling", isFalling);
+            }
+
+        if(heldItem != null)
         {
-            heldItem.transform.position = transform.position + new Vector3(-1, 0.5f, 0);
-            heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            if(transform.localScale.x == 1)
+            {
+                heldItem.transform.position = transform.position + new Vector3(.3f, 0, 0);
+                heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            }
+            else
+            {
+                heldItem.transform.position = transform.position + new Vector3(-.3f, 0, 0);
+                heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            }
+
         }
     }
 
@@ -58,12 +75,12 @@ public class CharacterController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
-        if(Input.GetKeyDown(KeyCode.F) && IsHolding())
+        if(Input.GetKeyUp(KeyCode.F) && IsHolding())
             DropItem();
 
         // Update animator parameters
-        //anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
-        //anim.SetBool("IsGrounded", isGrounded);
+        anim.SetBool("IsMoving", isMoving);
+        anim.SetBool("IsGrounded", isGrounded);
     }
 
     public void ChangeCurrentRoom(int newRoom)

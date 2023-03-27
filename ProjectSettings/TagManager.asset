@@ -7,6 +7,7 @@ TagManager:
   - Collectible
   - Grabable
   - UI_collectible
+  - Reflective
   layers:
   - Default
   - TransparentFX

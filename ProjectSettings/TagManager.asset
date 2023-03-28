@@ -8,6 +8,8 @@ TagManager:
   - Grabable
   - UI_collectible
   - Reflective
+  - ReflectiveD
+  - DEBUG
   layers:
   - Default
   - TransparentFX

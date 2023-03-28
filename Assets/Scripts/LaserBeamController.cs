@@ -7,6 +7,8 @@ public class LaserBeamController : MonoBehaviour
     public float laserWidth = 0.1f;
     public LayerMask layerMask;
     public bool reflectRight = true;
+    public GameObject reflectPrefab;
+    private bool hasReflected = false;
 
     private Vector2 reflectStartPosition;
     private bool isReflecting = false;
@@ -36,9 +38,22 @@ public class LaserBeamController : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Reflective"))
                 {
-                    reflectStartPosition = hit.point;
+                    reflectStartPosition = hit.collider.bounds.center;
                     laserBeam.SetPosition(1, hit.point + reflectDirection * laserWidth);
+
+                    // Spawn a new laser beam at the point of reflection, with an upward direction
+                    if (!hasReflected) {
+                        GameObject newReflectBeam = Instantiate(reflectPrefab, hit.collider.bounds.center, Quaternion.identity);
+                        LineRenderer newLaserBeam = newReflectBeam.GetComponent<LineRenderer>();
+                        newLaserBeam.startWidth = laserWidth;
+                        newLaserBeam.endWidth = laserWidth;
+                        newLaserBeam.positionCount = 2;
+                        newLaserBeam.SetPosition(0, hit.collider.bounds.center);
+                        newLaserBeam.SetPosition(1, hit.collider.bounds.center + Vector3.up * laserDistance);
+                        hasReflected = true;
                 }
+            }
+
                 else
                 {
                     laserBeam.SetPosition(1, hit.point);

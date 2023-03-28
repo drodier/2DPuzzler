@@ -44,10 +44,9 @@ public class CharacterController : MonoBehaviour
         bool falling = (rb.velocity.y < 0);
         if (falling != isFalling)
         {
-
             isFalling = falling;
             anim.SetBool("IsFalling", isFalling);
-            }
+        }
 
         if(heldItem != null)
         {
@@ -97,13 +96,18 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    public void DropItem()
+    public GrabableObject DropItem()
     {
+        GrabableObject dropped = null;
+
         if(!heldItem.IsLockedOut())
         {
             heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            dropped = heldItem;
             heldItem = null;
         }
+
+        return dropped;
     }
 
     public bool IsHolding()

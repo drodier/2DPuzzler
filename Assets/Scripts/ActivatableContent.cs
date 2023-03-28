@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActivatableContent : MonoBehaviour
 {
-    private bool solved = false;
+    [SerializeField] private bool solved = false;
 
     public void TogglePuzzle()
     {

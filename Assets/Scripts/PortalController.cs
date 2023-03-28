@@ -21,7 +21,7 @@ public class PortalController : MonoBehaviour
         if (other.CompareTag("Player") && !isPlayerInside && !isLocked)
         {
             isPlayerInside = true; // set flag to true
-            Vector3 positionOffset = new Vector3(isReturn ? -30f : 30f, 0f, 0f);
+            Vector3 positionOffset = new Vector3(isReturn ? -28f : 28f, 0f, 0f);
             other.transform.position += positionOffset;
             Camera.main.transform.position += positionOffset;
             GameObject.Find("Player").GetComponent<CharacterController>().ChangeCurrentRoom(isReturn ? 0 : 1);

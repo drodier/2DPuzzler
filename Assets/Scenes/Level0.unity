@@ -37149,6 +37149,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 496075754}
+  moveSound: {fileID: 8300000, guid: 105b443d76d0d0f488710f81add5740e, type: 3}
+  jumpSound: {fileID: 8300000, guid: 1cbc71ea3db6fd64aa5d88a0d8bee679, type: 3}
+  landSound: {fileID: 8300000, guid: 7f43ba72a5007844fa88bb8097045382, type: 3}
 --- !u!212 &1476609853
 SpriteRenderer:
   m_ObjectHideFlags: 0

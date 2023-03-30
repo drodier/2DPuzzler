@@ -17,11 +17,16 @@ public class CharacterController : MonoBehaviour
     private bool isFalling = false;
     private int currentRoom = 0;
     private GrabableObject heldItem = null;
+    private AudioSource audioSource;
+    public AudioClip moveSound;
+    public AudioClip jumpSound;
+    public AudioClip landSound;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -47,6 +52,11 @@ public class CharacterController : MonoBehaviour
         {
             isFalling = falling;
             anim.SetBool("IsFalling", isFalling);
+
+            if (!isFalling)
+            {
+                audioSource.PlayOneShot(landSound);
+            }
         }
 
         if(heldItem != null)
@@ -65,6 +75,14 @@ public class CharacterController : MonoBehaviour
             }
 
         }
+
+    }
+
+    // Function to be called by Animation Event to play sound
+    public void PlayMoveSound()
+    {
+        audioSource.clip = moveSound;
+        audioSource.Play();
     }
 
     private void Update()
@@ -80,6 +98,9 @@ public class CharacterController : MonoBehaviour
          if (isGrounded)
          {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+        // Play jump sound
+        audioSource.PlayOneShot(jumpSound);
     }
          else if (isTouchingWall)
     {

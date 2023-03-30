@@ -340,7 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
   canvasTransform: {fileID: 1129491255}
-  offset: {x: -854, y: 443}
+  offset: {x: 81, y: -5}
 --- !u!61 &314334230
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -427,7 +427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314334228}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.631593, y: -2.3160563, z: 14.6997385}
+  m_LocalPosition: {x: -14.93, y: -5.21, z: 14.6997385}
   m_LocalScale: {x: 1.8980359, y: 1.7183485, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36682,7 +36682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
   canvasTransform: {fileID: 1129491255}
-  offset: {x: -789, y: 443}
+  offset: {x: 147, y: -5}
 --- !u!61 &1169789206
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36769,7 +36769,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169789204}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.4284077, y: 1.3499438, z: 14.6997385}
+  m_LocalPosition: {x: -13.58, y: -5.21, z: 14.6997385}
   m_LocalScale: {x: 1.8980359, y: 1.7183485, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36903,9 +36903,9 @@ RectTransform:
   m_Father: {fileID: 776799135}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.680054, y: 0.694458}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 105.31995, y: -29.305542}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1196657618
@@ -36979,9 +36979,9 @@ RectTransform:
   m_Father: {fileID: 776799135}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.0199585, y: 0.694458}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 139.01996, y: -29.305542}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1292150797
@@ -37121,6 +37121,7 @@ GameObject:
   - component: {fileID: 1476609857}
   - component: {fileID: 1476609858}
   - component: {fileID: 1476609859}
+  - component: {fileID: 1476609860}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -37290,6 +37291,102 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.09}
   m_Size: {x: 0.21, y: 0.23}
   m_Direction: 0
+--- !u!82 &1476609860
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476609851}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1511428739
 GameObject:
   m_ObjectHideFlags: 0
@@ -37592,7 +37689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
   canvasTransform: {fileID: 1129491255}
-  offset: {x: -821, y: 443}
+  offset: {x: 115, y: -5}
 --- !u!61 &1617224321
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37679,7 +37776,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617224319}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.832408, y: -2.3160563, z: 14.6997385}
+  m_LocalPosition: {x: -14.21, y: -5.17, z: 14.6997385}
   m_LocalScale: {x: 1.8980359, y: 1.7183485, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37800,9 +37897,9 @@ RectTransform:
   m_Father: {fileID: 776799135}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 45.920044, y: 0.694458}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 170.92004, y: -29.305542}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814075161
@@ -37876,9 +37973,9 @@ RectTransform:
   m_Father: {fileID: 776799135}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -54.08, y: 0.694458}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 70.92, y: -29.305542}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1871948519
@@ -37998,7 +38095,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105756469}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.768593, y: -4.4060564, z: 14.6997385}
+  m_LocalPosition: {x: -15.7, y: -5.17, z: 14.6997385}
   m_LocalScale: {x: 1.8980359, y: 1.7183485, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -38019,7 +38116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
   canvasTransform: {fileID: 1129491255}
-  offset: {x: -889, y: 443}
+  offset: {x: 46, y: -5}
 --- !u!61 &2105756475
 BoxCollider2D:
   m_ObjectHideFlags: 0

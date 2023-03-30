@@ -10,6 +10,7 @@ TagManager:
   - Reflective
   - ReflectiveD
   - DEBUG
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

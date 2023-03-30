@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PortalController : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip portalSound;
     [SerializeField] private bool isReturn = false;
     private bool isPlayerInside = false; // flag to keep track of whether the player is inside the portal
     private bool isLocked = false;
@@ -25,6 +27,9 @@ public class PortalController : MonoBehaviour
             other.transform.position += positionOffset;
             Camera.main.transform.position += positionOffset;
             GameObject.Find("Player").GetComponent<CharacterController>().ChangeCurrentRoom(isReturn ? 0 : 1);
+
+            audioSource.PlayOneShot(portalSound);
+            
         }
     }
 

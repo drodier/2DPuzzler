@@ -341,6 +341,7 @@ MonoBehaviour:
   imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
   canvasTransform: {fileID: 1129491255}
   offset: {x: 81, y: -5}
+  pickupSound: {fileID: 8300000, guid: 483313d9f82a23f43ae54d8403bbc2b1, type: 3}
 --- !u!61 &314334230
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1024,6 +1025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1146e5b3350934041b76fb12bfd7b176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 1476609860}
+  portalSound: {fileID: 8300000, guid: 84db09bed9cca234cba7dc4e58b150e7, type: 3}
   isReturn: 1
 --- !u!4 &787266356
 Transform:
@@ -36683,6 +36686,7 @@ MonoBehaviour:
   imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
   canvasTransform: {fileID: 1129491255}
   offset: {x: 147, y: -5}
+  pickupSound: {fileID: 8300000, guid: 073e510b510290346bcdc08181364067, type: 3}
 --- !u!61 &1169789206
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37152,6 +37156,8 @@ MonoBehaviour:
   moveSound: {fileID: 8300000, guid: 105b443d76d0d0f488710f81add5740e, type: 3}
   jumpSound: {fileID: 8300000, guid: 1cbc71ea3db6fd64aa5d88a0d8bee679, type: 3}
   landSound: {fileID: 8300000, guid: 7f43ba72a5007844fa88bb8097045382, type: 3}
+  pickUpSound: {fileID: 8300000, guid: 49f095fe02f46f04083e6764c0b57d10, type: 3}
+  dropSound: {fileID: 8300000, guid: 49f095fe02f46f04083e6764c0b57d10, type: 3}
 --- !u!212 &1476609853
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37693,6 +37699,7 @@ MonoBehaviour:
   imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
   canvasTransform: {fileID: 1129491255}
   offset: {x: 115, y: -5}
+  pickupSound: {fileID: 8300000, guid: 483313d9f82a23f43ae54d8403bbc2b1, type: 3}
 --- !u!61 &1617224321
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38120,6 +38127,7 @@ MonoBehaviour:
   imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
   canvasTransform: {fileID: 1129491255}
   offset: {x: 46, y: -5}
+  pickupSound: {fileID: 8300000, guid: 483313d9f82a23f43ae54d8403bbc2b1, type: 3}
 --- !u!61 &2105756475
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38306,9 +38314,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5130929870344463490, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1476609860}
+    - target: {fileID: 5130929870344463490, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
+      propertyPath: portalSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 84db09bed9cca234cba7dc4e58b150e7, type: 3}
     - target: {fileID: 5130929870344463492, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
       propertyPath: m_Name
       value: Portal Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130929870344463503, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
+      propertyPath: solved
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa881d947b550de4e9828f57254c3d66, type: 3}

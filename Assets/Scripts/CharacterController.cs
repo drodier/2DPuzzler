@@ -21,6 +21,8 @@ public class CharacterController : MonoBehaviour
     public AudioClip moveSound;
     public AudioClip jumpSound;
     public AudioClip landSound;
+    public AudioClip pickUpSound;
+    public AudioClip dropSound;
 
     private void Start()
     {
@@ -106,6 +108,8 @@ public class CharacterController : MonoBehaviour
     {
         float wallJumpDirection = transform.localScale.x > 0 ? -1 : 1; // determine which direction to jump off the wall
         rb.velocity = new Vector2(wallJumpDirection * wallJumpForce, jumpForce);
+
+        audioSource.PlayOneShot(jumpSound);
     }
 }
 
@@ -123,31 +127,35 @@ public class CharacterController : MonoBehaviour
         currentRoom = newRoom;
     }
 
-    public void PickUpItem(GrabableObject item)
-    {
-        if(!IsHolding())
+        public void PickUpItem(GrabableObject item)
         {
-            heldItem = item;
-            heldItem.StartLockout();
-        }
-    }
+            if(!IsHolding())
+            {
+                heldItem = item;
+                heldItem.StartLockout();
 
-    public GrabableObject DropItem()
-    {
-        GrabableObject dropped = null;
-
-        if(!heldItem.IsLockedOut())
-        {
-            heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            dropped = heldItem;
-            heldItem = null;
+                audioSource.PlayOneShot(pickUpSound);
+            }
         }
 
-        return dropped;
-    }
+        public GrabableObject DropItem()
+        {
+            GrabableObject dropped = null;
 
-    public bool IsHolding()
-    {
-        return heldItem != null;
-    }
+            if(!heldItem.IsLockedOut())
+            {
+                heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                dropped = heldItem;
+                heldItem = null;
+
+                audioSource.PlayOneShot(dropSound);
+            }
+
+            return dropped;
+        }
+
+        public bool IsHolding()
+        {
+            return heldItem != null;
+        }
 }

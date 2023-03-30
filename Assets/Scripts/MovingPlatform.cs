@@ -14,6 +14,8 @@ public class MovingPlatform : MonoBehaviour
     private float startTime;                             // time when the movement started
     private float journeyLength;
 
+    private GameObject player;                           // reference to the player's GameObject
+
     void Start()
     {
         startPosition = transform.position;
@@ -28,25 +30,43 @@ public class MovingPlatform : MonoBehaviour
         journeyLength = Vector3.Distance(startPosition, endPosition);
     }
 
-        void Update()
+    void Update()
+    {
+        float journeyTime = Time.time - startTime;
+        float fracJourney = Mathf.PingPong(journeyTime * speed, journeyLength) / journeyLength;
+        transform.position = Vector3.Lerp(startPosition, endPosition, fracJourney);
+        if (fracJourney == 1)
         {
-            float journeyTime = Time.time - startTime;
-            float fracJourney = Mathf.PingPong(journeyTime * speed, journeyLength) / journeyLength;
-            transform.position = Vector3.Lerp(startPosition, endPosition, fracJourney);
-            if (fracJourney == 1)
+            if (direction == PlatformDirection.UpDown)
             {
-                if (direction == PlatformDirection.UpDown)
-                {
-                    endPosition = startPosition;
-                    startPosition = transform.position;
-                }
-                else
-                {
-                    startPosition = endPosition;
-                    endPosition = new Vector3(startPosition.x + distance, startPosition.y, startPosition.z);
-                    journeyLength = Vector3.Distance(startPosition, endPosition);
-                }
-                startTime = Time.time;
+                endPosition = startPosition;
+                startPosition = transform.position;
             }
+            else
+            {
+                startPosition = endPosition;
+                endPosition = new Vector3(startPosition.x + distance, startPosition.y, startPosition.z);
+                journeyLength = Vector3.Distance(startPosition, endPosition);
+            }
+            startTime = Time.time;
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            player = other.gameObject;
+            player.transform.SetParent(transform);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            player.transform.SetParent(null);
+            player = null;
+        }
+    }
 }

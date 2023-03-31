@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1146e5b3350934041b76fb12bfd7b176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 5118478247130861133, guid: 9e63a18c9dfef4040966feb0195b5a79, type: 3}
+  portalSound: {fileID: 8300000, guid: 84db09bed9cca234cba7dc4e58b150e7, type: 3}
   isReturn: 0
 --- !u!61 &5130929870344463491
 BoxCollider2D:
@@ -138,3 +140,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e1c1d06ebd23f45b4f65ee3bd3235f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  solved: 0

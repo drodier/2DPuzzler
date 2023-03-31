@@ -12,7 +12,7 @@ public class ScaleHandController : MonoBehaviour
     {
         if(heldItem != null)
         {
-            heldItem.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f + heldItem.transform.localScale.y/2, transform.position.z);
+            heldItem.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f + heldItem.transform.localScale.y/5, transform.position.z);
             heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
 
             transform.localPosition = new Vector3(transform.localPosition.x, -((float)heldItem.GetWeight())/10f, transform.localPosition.z);

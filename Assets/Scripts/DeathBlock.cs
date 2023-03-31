@@ -29,6 +29,8 @@ public class DeathBlock : MonoBehaviour
                 audioSource.PlayOneShot(deathSound);
             }
 
+        Debug.Log("Player has collided with death block");
+
             // Respawn the player to the last checkpoint
             if (checkpointManager != null)
             {

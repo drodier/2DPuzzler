@@ -1,47 +1,72 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckPointManager : MonoBehaviour
 {
-    private Transform[] checkpoints;
-    private int currentCheckpointIndex;
+    public Sprite activeSprite;
+    public Sprite inactiveSprite;
+    public bool isActive = false;
+
+    private SpriteRenderer spriteRenderer;
+    private GameObject player;
 
     void Start()
     {
-        // Find all the checkpoint objects in the scene
-        GameObject[] checkpointObjects = GameObject.FindGameObjectsWithTag("Checkpoint");
-        checkpoints = new Transform[checkpointObjects.Length];
-        for (int i = 0; i < checkpointObjects.Length; i++)
-        {
-            checkpoints[i] = checkpointObjects[i].transform;
-        }
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = inactiveSprite;
 
-        // Set the current checkpoint to the first checkpoint in the list
-        currentCheckpointIndex = 0;
+        // Find the player object in the scene
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            Debug.LogError("Player object not found in scene!");
+        }
     }
 
-
-    public void SetCurrentCheckpoint(Transform checkpoint)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        // Get the index of the checkpoint in the list
-        int index = System.Array.IndexOf(checkpoints, checkpoint);
-
-        // If the checkpoint is found in the list, update the current checkpoint index
-        if (index >= 0)
+        if (other.CompareTag("Player"))
         {
-            currentCheckpointIndex = index;
+            // Deactivate all other checkpoints in the scene
+            CheckPointManager[] checkpoints = FindObjectsOfType<CheckPointManager>();
+            foreach (CheckPointManager checkpoint in checkpoints)
+            {
+                if (checkpoint != this)
+                {
+                    checkpoint.ResetCheckpoint();
+                }
+            }
+
+            isActive = true;
+            spriteRenderer.sprite = activeSprite;
         }
+    }
+
+    public void ResetCheckpoint()
+    {
+        isActive = false;
+        spriteRenderer.sprite = inactiveSprite;
     }
 
     public void RespawnPlayer()
     {
-        // Get the current checkpoint transform
-        Transform checkpoint = checkpoints[currentCheckpointIndex];
-
-        // Get the player's transform
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-        // Move the player to the checkpoint position and reset its velocity
-        player.transform.position = checkpoint.position;
-        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        if (player != null)
+        {
+            // Find the active checkpoint and respawn the player at its position
+            CheckPointManager[] checkpoints = FindObjectsOfType<CheckPointManager>();
+            foreach (CheckPointManager checkpoint in checkpoints)
+            {
+                if (checkpoint.isActive)
+                {
+                    player.transform.position = checkpoint.transform.position;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("Player object not found in scene!");
+        }
     }
 }

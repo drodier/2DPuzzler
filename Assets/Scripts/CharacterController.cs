@@ -8,6 +8,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float wallJumpForce = 10f; // Character wall jump force
     [SerializeField] private LayerMask groundLayer; // Layer mask for ground objects
     [SerializeField] private Transform groundCheck; // Transform object for checking if character is on ground
+    [SerializeField] private LayerMask wallLayer; // Layer mask for wall objects
 
     private Rigidbody2D rb; // Character rigidbody component
     private Animator anim; // Character animator component
@@ -15,6 +16,7 @@ public class CharacterController : MonoBehaviour
     private bool isSprinting = false;
     private bool isMoving = false;
     private bool isFalling = false;
+    private bool isJumping = false;
     private int currentRoom = 0;
     private GrabableObject heldItem = null;
     private AudioSource audioSource;
@@ -78,6 +80,12 @@ public class CharacterController : MonoBehaviour
 
         }
 
+            // Check if character is touching a wall and apply downwards force
+            bool isTouchingWall = GetComponent<Collider2D>().IsTouchingLayers(wallLayer);
+            if (isTouchingWall && !isGrounded && !isJumping)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, -moveSpeed/2);
+            }
     }
 
     // Function to be called by Animation Event to play sound
@@ -91,28 +99,34 @@ public class CharacterController : MonoBehaviour
     {
         // Check if character is on ground
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
-        bool isTouchingWall = Physics2D.Raycast(transform.position, transform.right, 0.5f, groundLayer) || Physics2D.Raycast(transform.position, -transform.right, 0.5f, groundLayer);
+        bool isTouchingWall = Physics2D.Raycast(transform.position, transform.right, 0.5f, wallLayer) || Physics2D.Raycast(transform.position, -transform.right, 0.5f, wallLayer);
         isSprinting = isGrounded ? Input.GetKey(KeyCode.LeftShift) : false;
 
         // Character jump input
-       if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-         if (isGrounded)
-         {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            if (isGrounded)
+            {
+                isJumping = true; // Set jumping flag to true
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
-        // Play jump sound
-        audioSource.PlayOneShot(jumpSound);
-    }
-         else if (isTouchingWall)
-    {
-        float wallJumpDirection = transform.localScale.x > 0 ? -1 : 1; // determine which direction to jump off the wall
-        rb.velocity = new Vector2(wallJumpDirection * wallJumpForce, jumpForce);
+                // Play jump sound
+                audioSource.PlayOneShot(jumpSound);
+            }
+            else if (isTouchingWall)
+            {
+                isJumping = true; // Set jumping flag to true
+                float wallJumpDirection = transform.localScale.x > 0 ? -1 : 1; // determine which direction to jump off the wall
+                rb.velocity = new Vector2(wallJumpDirection * wallJumpForce, jumpForce);
 
-        audioSource.PlayOneShot(jumpSound);
-    }
-}
-
+                audioSource.PlayOneShot(jumpSound);
+            }
+        }
+            // Reset jumping flag when character lands on ground
+            if (isGrounded)
+            {
+                isJumping = false;
+            }
 
         if(Input.GetKeyUp(KeyCode.F) && IsHolding())
             DropItem();

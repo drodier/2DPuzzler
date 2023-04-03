@@ -36183,6 +36183,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5118478247130861109, guid: 9e63a18c9dfef4040966feb0195b5a79, type: 3}
+      propertyPath: wallSlideForce
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5118478247130861109, guid: 9e63a18c9dfef4040966feb0195b5a79, type: 3}
       propertyPath: wallLayer.m_Bits
       value: 512
       objectReference: {fileID: 0}

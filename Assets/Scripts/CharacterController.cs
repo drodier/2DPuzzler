@@ -7,6 +7,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float jumpForce = 10f; // Character jump force
     [SerializeField] private float sprintSpeed = 2f;
     [SerializeField] private float wallJumpForce = 10f; // Character wall jump force
+    [SerializeField] private float wallSlideForce = 5f;
     [SerializeField] private LayerMask groundLayer; // Layer mask for ground objects
     [SerializeField] private Transform groundCheck; // Transform object for checking if character is on ground
     [SerializeField] private LayerMask wallLayer; // Layer mask for wall objects
@@ -85,7 +86,7 @@ public class CharacterController : MonoBehaviour
             bool isTouchingWall = GetComponent<Collider2D>().IsTouchingLayers(wallLayer) && !isGrounded;
             if (isTouchingWall && !isGrounded && !isJumping)
             {
-                    rb.velocity = new Vector2(rb.velocity.x, -moveSpeed);
+                    rb.velocity = new Vector2(rb.velocity.x, -wallSlideForce);
             }
 
     }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour
@@ -81,11 +82,12 @@ public class CharacterController : MonoBehaviour
         }
 
             // Check if character is touching a wall and apply downwards force
-            bool isTouchingWall = GetComponent<Collider2D>().IsTouchingLayers(wallLayer);
+            bool isTouchingWall = GetComponent<Collider2D>().IsTouchingLayers(wallLayer) && !isGrounded;
             if (isTouchingWall && !isGrounded && !isJumping)
             {
-                rb.velocity = new Vector2(rb.velocity.x, -moveSpeed/2);
+                    rb.velocity = new Vector2(rb.velocity.x, -moveSpeed);
             }
+
     }
 
     // Function to be called by Animation Event to play sound
@@ -93,6 +95,12 @@ public class CharacterController : MonoBehaviour
     {
         audioSource.clip = moveSound;
         audioSource.Play();
+    }
+
+    private IEnumerator JumpDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        isJumping = false;
     }
 
     private void Update()
@@ -105,6 +113,7 @@ public class CharacterController : MonoBehaviour
         // Character jump input
         if (Input.GetKeyDown(KeyCode.Space))
         {
+
             if (isGrounded)
             {
                 isJumping = true; // Set jumping flag to true
@@ -112,14 +121,15 @@ public class CharacterController : MonoBehaviour
 
                 // Play jump sound
                 audioSource.PlayOneShot(jumpSound);
+
             }
             else if (isTouchingWall)
             {
                 isJumping = true; // Set jumping flag to true
                 float wallJumpDirection = transform.localScale.x > 0 ? -1 : 1; // determine which direction to jump off the wall
                 rb.velocity = new Vector2(wallJumpDirection * wallJumpForce, jumpForce);
-
                 audioSource.PlayOneShot(jumpSound);
+                StartCoroutine(JumpDelay(0.1f));
             }
         }
             // Reset jumping flag when character lands on ground
@@ -127,6 +137,7 @@ public class CharacterController : MonoBehaviour
             {
                 isJumping = false;
             }
+
 
         if(Input.GetKeyUp(KeyCode.F) && IsHolding())
             DropItem();

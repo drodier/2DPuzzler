@@ -12,10 +12,6 @@ public class DeathBlock : MonoBehaviour
         // Get the CheckpointManager component from the scene
         checkpointManager = FindObjectOfType<CheckPointManager>();
         audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            Debug.LogError("AudioSource component not found on DeathBlock object!");
-        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -28,8 +24,6 @@ public class DeathBlock : MonoBehaviour
             {
                 audioSource.PlayOneShot(deathSound);
             }
-
-        Debug.Log("Player has collided with death block");
 
             // Respawn the player to the last checkpoint
             if (checkpointManager != null)

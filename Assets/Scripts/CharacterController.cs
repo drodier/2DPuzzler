@@ -20,6 +20,7 @@ public class CharacterController : MonoBehaviour
     private bool isFalling = false;
     private bool isJumping = false;
     private int currentRoom = 0;
+    public int collectedCount = 0;
     private GrabableObject heldItem = null;
     private AudioSource audioSource;
     public AudioClip moveSound;

@@ -1958,9 +1958,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a7f706c1a103247b11cb3513b72741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
-  canvasTransform: {fileID: 1129491255}
-  offset: {x: 81, y: -5}
+  imageToChange: {fileID: 1196657618}
+  newColor: {r: 1, g: 1, b: 1, a: 1}
   pickupSound: {fileID: 8300000, guid: 483313d9f82a23f43ae54d8403bbc2b1, type: 3}
 --- !u!61 &314334230
 BoxCollider2D:
@@ -37153,9 +37152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a7f706c1a103247b11cb3513b72741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
-  canvasTransform: {fileID: 1129491255}
-  offset: {x: 147, y: -5}
+  imageToChange: {fileID: 1814075161}
+  newColor: {r: 1, g: 1, b: 1, a: 1}
   pickupSound: {fileID: 8300000, guid: 073e510b510290346bcdc08181364067, type: 3}
 --- !u!61 &1169789206
 BoxCollider2D:
@@ -39199,9 +39197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a7f706c1a103247b11cb3513b72741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
-  canvasTransform: {fileID: 1129491255}
-  offset: {x: 115, y: -5}
+  imageToChange: {fileID: 1292150797}
+  newColor: {r: 1, g: 1, b: 1, a: 1}
   pickupSound: {fileID: 8300000, guid: 483313d9f82a23f43ae54d8403bbc2b1, type: 3}
 --- !u!61 &1617224321
 BoxCollider2D:
@@ -44804,9 +44801,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a7f706c1a103247b11cb3513b72741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
-  canvasTransform: {fileID: 1129491255}
-  offset: {x: 46, y: -5}
+  imageToChange: {fileID: 1871948519}
+  newColor: {r: 1, g: 1, b: 1, a: 1}
   pickupSound: {fileID: 8300000, guid: 483313d9f82a23f43ae54d8403bbc2b1, type: 3}
 --- !u!61 &2105756475
 BoxCollider2D:

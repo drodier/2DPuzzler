@@ -12,6 +12,8 @@ public class CheckPointManager : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private GameObject player;
     private AudioSource audioSource;
+    private int collectedCount = 0;
+    private int prevCollectedCount = 0;
 
     void Start()
     {
@@ -27,6 +29,11 @@ public class CheckPointManager : MonoBehaviour
 
         // Get the AudioSource component
         audioSource = GetComponent<AudioSource>();
+    }
+
+    public void CollectCollectible()
+    {
+        collectedCount++;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -54,6 +61,8 @@ public class CheckPointManager : MonoBehaviour
                     audioSource.PlayOneShot(checkpointSound);
                 }
             }
+
+            prevCollectedCount = collectedCount; // Store the current collected count
         }
     }
 
@@ -61,6 +70,7 @@ public class CheckPointManager : MonoBehaviour
     {
         isActive = false;
         spriteRenderer.sprite = inactiveSprite;
+        collectedCount = 0;
     }
 
     public void RespawnPlayer()
@@ -74,6 +84,16 @@ public class CheckPointManager : MonoBehaviour
                 if (checkpoint.isActive)
                 {
                     player.transform.position = checkpoint.transform.position;
+
+                    if (prevCollectedCount > checkpoint.collectedCount)
+                    {
+                        player.GetComponent<CharacterController>().collectedCount = checkpoint.collectedCount;
+                    }
+                    else
+                    {
+                        player.GetComponent<CharacterController>().collectedCount = prevCollectedCount;
+                    }
+
                     break;
                 }
             }

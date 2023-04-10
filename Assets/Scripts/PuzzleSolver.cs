@@ -6,6 +6,11 @@ public class PuzzleSolver : MonoBehaviour
 {
     [SerializeField] private ActivatableContent activatableContent;
     
+    public void SolvePuzzle()
+    {
+        activatableContent.SolvePuzzle();
+    }
+
     public void TogglePuzzle()
     {
         activatableContent.TogglePuzzle();

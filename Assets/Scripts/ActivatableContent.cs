@@ -6,6 +6,11 @@ public class ActivatableContent : MonoBehaviour
 {
     [SerializeField] private bool solved = false;
 
+    public void SolvePuzzle()
+    {
+        solved = true;
+    }
+
     public void TogglePuzzle()
     {
         solved = !solved;

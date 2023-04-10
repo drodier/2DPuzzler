@@ -15,7 +15,7 @@ public class KeypadController : MonoBehaviour
             screen.text = "";
             screen.color = new Color(0, 0, 0);
             if(GetComponent<PuzzleSolver>().GetStatus())
-                GetComponent<PuzzleSolver>().TogglePuzzle();
+                GetComponent<PuzzleSolver>().SolvePuzzle();
         }
         else
         {
@@ -30,7 +30,7 @@ public class KeypadController : MonoBehaviour
     {
         if(screen.text == solution)
         {
-            GetComponent<PuzzleSolver>().TogglePuzzle();
+            GetComponent<PuzzleSolver>().SolvePuzzle();
             screen.color = new Color(0, 1, 0);
         }
         else

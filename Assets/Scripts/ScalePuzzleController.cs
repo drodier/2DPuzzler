@@ -16,7 +16,7 @@ public class ScalePuzzleController : MonoBehaviour
         }
 
         if(value[0] == solution[0] && value[1] == solution[1] && value[2] == solution[2] && value[3] == solution[3] && !GetComponent<PuzzleSolver>().GetStatus())
-            GetComponent<PuzzleSolver>().TogglePuzzle();
+            GetComponent<PuzzleSolver>().SolvePuzzle();
     }
 
 }

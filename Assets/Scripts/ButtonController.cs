@@ -18,7 +18,7 @@ public class ButtonController : MonoBehaviour
     {
         if(Input.GetMouseButtonUp(0))
         {
-            GetComponent<PuzzleSolver>().TogglePuzzle();
+            GetComponent<PuzzleSolver>().SolvePuzzle();
         }
     }
 }

@@ -11,6 +11,8 @@ TagManager:
   - ReflectiveD
   - DEBUG
   - Checkpoint
+  - TileMap
+  - Receiver
   layers:
   - Default
   - TransparentFX

@@ -7,6 +7,11 @@ public class CameraController : MonoBehaviour
     private GameObject player;
     [SerializeField] private float maxCameraSpeed = 3;
     [SerializeField] private float camSpeed = 3;
+    [SerializeField] private float maxX;
+    [SerializeField] private float minX;
+    [SerializeField] private float maxY;
+    [SerializeField] private float minY;
+
 
     private Vector2 desiredPosition;
 
@@ -22,6 +27,8 @@ public class CameraController : MonoBehaviour
         if (player != null)
         {
             desiredPosition = player.transform.position + new Vector3(player.transform.localScale.x, .5f, 0);
+
+            desiredPosition = new Vector2(Mathf.Clamp(desiredPosition.x, minX, maxX), Mathf.Clamp(desiredPosition.y, minY, maxY));
         }
     }
 

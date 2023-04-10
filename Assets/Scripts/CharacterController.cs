@@ -68,13 +68,13 @@ public class CharacterController : MonoBehaviour
         {
             if(transform.localScale.x == 1)
             {
-                heldItem.transform.position = transform.position + new Vector3(.3f, 0, 0);
+                heldItem.transform.position = transform.position + new Vector3(.3f + heldItem.transform.localScale.x/2, 0, 0);
                 //heldItem.transform.localScale = new Vector3(0.1590151f, heldItem.transform.localScale.y, heldItem.transform.localScale.z);
                 heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             }
             else
             {
-                heldItem.transform.position = transform.position + new Vector3(-.3f, 0, 0);
+                heldItem.transform.position = transform.position + new Vector3(-.3f - heldItem.transform.localScale.x/2, 0, 0);
                 //heldItem.transform.localScale = new Vector3(-0.1590151f, heldItem.transform.localScale.y, heldItem.transform.localScale.z);
                 heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             }

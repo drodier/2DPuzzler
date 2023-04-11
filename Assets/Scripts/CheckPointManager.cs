@@ -8,14 +8,13 @@ public class CheckPointManager : MonoBehaviour
     public Sprite inactiveSprite;
     public bool isActive = false;
     public AudioClip checkpointSound;
-
     private SpriteRenderer spriteRenderer;
     private GameObject player;
     private AudioSource audioSource;
-    private int collectedCount = 0;
-    private int prevCollectedCount = 0;
+    public static int savedBookCount = 0; // the total count of collected items at last checkpoint
+    public static List<GameObject> savedItems = new List<GameObject>(); // list of saved items at last checkpoint
 
-    void Start()
+    private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = inactiveSprite;
@@ -31,12 +30,7 @@ public class CheckPointManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void CollectCollectible()
-    {
-        collectedCount++;
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
@@ -55,14 +49,36 @@ public class CheckPointManager : MonoBehaviour
                 isActive = true;
                 spriteRenderer.sprite = activeSprite;
 
+                // Store the current value of totalBookCount and collectedItems
+                savedBookCount = CollectiblesController.totalBookCount;
+
+                // Create a new list for the saved items
+                savedItems = new List<GameObject>();
+
+                // Add the collected items that were picked up after the last checkpoint to the saved items list
+                foreach (GameObject item in CollectiblesController.collectedItems)
+                {
+                    if (item.activeSelf)
+                    {
+                        savedItems.Add(item);
+                    }
+                }
+
+                // Destroy all the collected items that were picked up before the checkpoint
+                foreach (GameObject item in savedItems)
+                {
+                    Destroy(item);
+                }
+
+                // Clear the collected items list
+                CollectiblesController.collectedItems.Clear();
+
                 // Play the checkpoint sound effect
                 if (audioSource != null && checkpointSound != null)
                 {
                     audioSource.PlayOneShot(checkpointSound);
                 }
             }
-
-            prevCollectedCount = collectedCount; // Store the current collected count
         }
     }
 
@@ -70,7 +86,6 @@ public class CheckPointManager : MonoBehaviour
     {
         isActive = false;
         spriteRenderer.sprite = inactiveSprite;
-        collectedCount = 0;
     }
 
     public void RespawnPlayer()
@@ -84,18 +99,15 @@ public class CheckPointManager : MonoBehaviour
                 if (checkpoint.isActive)
                 {
                     player.transform.position = checkpoint.transform.position;
-
-                    if (prevCollectedCount > checkpoint.collectedCount)
-                    {
-                        player.GetComponent<CharacterController>().collectedCount = checkpoint.collectedCount;
-                    }
-                    else
-                    {
-                        player.GetComponent<CharacterController>().collectedCount = prevCollectedCount;
-                    }
-
+                    CollectiblesController.totalBookCount = savedBookCount; // reset totalBookCount to savedBookCount
                     break;
                 }
+            }
+
+            // Respawn the collected items that were picked up after the last checkpoint
+            foreach (GameObject item in savedItems)
+            {
+                item.SetActive(true);
             }
         }
         else

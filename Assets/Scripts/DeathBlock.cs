@@ -9,14 +9,13 @@ public class DeathBlock : MonoBehaviour
 
     void Start()
     {
-        // Get the CheckpointManager component from the scene
+        // Get the CheckPointManager component from the scene
         checkpointManager = FindObjectOfType<CheckPointManager>();
         audioSource = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if the player has collided with the DeathBlock
         if (other.gameObject.CompareTag("Player"))
         {
             // Play the death sound effect
@@ -29,8 +28,15 @@ public class DeathBlock : MonoBehaviour
             if (checkpointManager != null)
             {
                 checkpointManager.RespawnPlayer();
+
+                // Reactivate all collected items
+                foreach (GameObject item in CollectiblesController.collectedItems)
+                {
+                    item.SetActive(true);
+                }
+
+                CollectiblesController.collectedItems.Clear(); // clear the collected items list
             }
         }
     }
 }
-

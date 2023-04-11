@@ -3327,8 +3327,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593ff9f663a186b4c9d4186a7f034a0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCameraSpeed: 20
-  camSpeed: 3
+  maxCameraSpeed: 2
+  camSpeed: 4
+  maxX: 60
+  minX: -4.8
+  maxY: 100
+  minY: -8
 --- !u!1 &526646347
 GameObject:
   m_ObjectHideFlags: 0
@@ -36199,11 +36203,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5118478247130861111, guid: 9e63a18c9dfef4040966feb0195b5a79, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33.41
+      value: -8.26
       objectReference: {fileID: 0}
     - target: {fileID: 5118478247130861111, guid: 9e63a18c9dfef4040966feb0195b5a79, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.451
+      value: -9.472
       objectReference: {fileID: 0}
     - target: {fileID: 5118478247130861111, guid: 9e63a18c9dfef4040966feb0195b5a79, type: 3}
       propertyPath: m_LocalPosition.z

@@ -8,14 +8,22 @@ public class PortalController : MonoBehaviour
     private bool isPlayerInside = false; // flag to keep track of whether the player is inside the portal
     private bool isLocked = false;
 
-    private Color lockedColor = new Color(.5f, .5f, .5f);
-    private Color unlockedColor = new Color(1, 1, 1);
+    private Animator animator; // reference to the portal's Animator component
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void FixedUpdate()
     {
         isLocked = !GetComponent<ActivatableContent>().GetStatus();
 
-        GetComponent<SpriteRenderer>().color = isLocked ? lockedColor : unlockedColor;
+        // No longer changing the color of the portal
+        // GetComponent<SpriteRenderer>().color = isLocked ? lockedColor : unlockedColor;
+        
+        // Instead, trigger the animation based on the lock status
+        animator.SetBool("IsLocked", isLocked);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -29,7 +37,6 @@ public class PortalController : MonoBehaviour
             GameObject.Find("Player").GetComponent<CharacterController>().ChangeCurrentRoom(isReturn ? 0 : 1);
 
             audioSource.PlayOneShot(portalSound);
-            
         }
     }
 

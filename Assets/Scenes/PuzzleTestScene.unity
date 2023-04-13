@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &294170442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5130929870344463492, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
+  m_PrefabInstance: {fileID: 1193401831}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &404453642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15177,6 +15182,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5130929870344463488, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 583212226, guid: 085a496429b189743b685f2cedde28c9, type: 3}
     - target: {fileID: 5130929870344463489, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -15187,7 +15196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5130929870344463489, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.304178
+      value: -9.39
       objectReference: {fileID: 0}
     - target: {fileID: 5130929870344463489, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15221,9 +15230,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5130929870344463490, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
+      propertyPath: isReturn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130929870344463490, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
+      propertyPath: lockedState
+      value: 
+      objectReference: {fileID: 7190681668933501337, guid: d8584f280c2bd704cbdd7a07db551339, type: 3}
+    - target: {fileID: 5130929870344463490, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
+      propertyPath: unlockedState
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130929870344463491, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130929870344463491, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.31
+      objectReference: {fileID: 0}
     - target: {fileID: 5130929870344463492, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
       propertyPath: m_Name
       value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130929870344463503, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
+      propertyPath: solved
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
@@ -15432,12 +15465,32 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5130929870344463503, guid: fa881d947b550de4e9828f57254c3d66, type: 3}
   m_PrefabInstance: {fileID: 1193401831}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 294170442}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e1c1d06ebd23f45b4f65ee3bd3235f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2101072401
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294170442}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c29d4e46f8b7397479e0f39cb91af0a5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2145668719 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8090120184722734261, guid: 68fbd37d32de5b04c80cf2d784382e59, type: 3}

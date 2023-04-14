@@ -10,6 +10,12 @@ public class GrabableObject : MonoBehaviour
     private bool isLockedOut = false;
     private CharacterController player;
 
+    public float GetWeightMultiplier()
+    {
+        // Calculate weight multiplier based on weight value
+        return Mathf.Clamp(1 - (weight / 10f), 0.5f, 1f);
+    }
+
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<CharacterController>();

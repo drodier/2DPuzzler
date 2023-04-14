@@ -36,6 +36,17 @@ public class CharacterController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    private float GetJumpForce()
+    {
+        float jumpForce = this.jumpForce;
+        if(IsHolding())
+        {
+            // Reduce jump force based on weight of held item
+            jumpForce *= heldItem.GetWeightMultiplier();
+        }
+        return jumpForce;
+    }
+
     private void FixedUpdate()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -115,21 +126,19 @@ public class CharacterController : MonoBehaviour
         // Character jump input
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
             if (isGrounded)
             {
                 isJumping = true; // Set jumping flag to true
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                rb.velocity = new Vector2(rb.velocity.x, GetJumpForce()); // Use GetJumpForce() method to calculate jump force
 
                 // Play jump sound
                 audioSource.PlayOneShot(jumpSound);
-
             }
             else if (isTouchingWall)
             {
                 isJumping = true; // Set jumping flag to true
                 float wallJumpDirection = transform.localScale.x > 0 ? -1 : 1; // determine which direction to jump off the wall
-                rb.velocity = new Vector2(wallJumpDirection * wallJumpForce, jumpForce);
+                rb.velocity = new Vector2(wallJumpDirection * wallJumpForce, GetJumpForce()); // Use GetJumpForce() method to calculate jump force
                 audioSource.PlayOneShot(jumpSound);
                 StartCoroutine(JumpDelay(0.1f));
             }

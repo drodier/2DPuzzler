@@ -6,6 +6,7 @@ public class GrabableObject : MonoBehaviour
 {
     [SerializeField] private int pickupLockout = 10;
     [SerializeField] private int weight = 1;
+    [SerializeField] public float throwForce = 10f;
     private int timeHeld = 0;
     private bool isLockedOut = false;
     private CharacterController player;

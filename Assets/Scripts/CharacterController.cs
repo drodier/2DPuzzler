@@ -21,6 +21,8 @@ public class CharacterController : MonoBehaviour
     private bool isJumping = false;
     private int currentRoom = 0;
     public int collectedCount = 0;
+    private bool isGrabKeyHeld;
+    private float grabHoldTime;
     private GrabableObject heldItem = null;
     private AudioSource audioSource;
     public AudioClip moveSound;
@@ -149,9 +151,30 @@ public class CharacterController : MonoBehaviour
                 isJumping = false;
             }
 
+            if(Input.GetKeyUp(KeyCode.F) && IsHolding())
+            {
+                float grabDuration = Time.time - grabStartTime;
+                if(grabDuration > 1f) // If grab key is released after being held down for a certain duration
+                {
+                    Vector2 throwDirection = new Vector2(transform.localScale.x, 1f).normalized;
 
-        if(Input.GetKeyUp(KeyCode.F) && IsHolding())
-            DropItem();
+                    if(IsHolding())
+                    {
+                        float weightMultiplier = heldItem.GetWeightMultiplier();
+                        throwDirection *= new Vector2(weightMultiplier, 1f);
+                    }
+
+                    heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                    heldItem.GetComponent<Rigidbody2D>().velocity = throwDirection * heldItem.throwForce;
+                    heldItem = null;
+
+                    audioSource.PlayOneShot(dropSound);
+                }
+                else // If grab key is released quickly, drop the held item
+                {
+                    DropItem();
+                }
+            }
 
         // Update animator parameters
         anim.SetBool("IsMoving", isMoving);
@@ -163,16 +186,20 @@ public class CharacterController : MonoBehaviour
         currentRoom = newRoom;
     }
 
-        public void PickUpItem(GrabableObject item)
+    private float grabStartTime;
+    public void PickUpItem(GrabableObject item)
+    {
+        if(!IsHolding())
         {
-            if(!IsHolding())
-            {
-                heldItem = item;
-                heldItem.StartLockout();
+            heldItem = item;
+            heldItem.StartLockout();
 
-                audioSource.PlayOneShot(pickUpSound);
-            }
+            grabStartTime = Time.time; // Store the time when the grab key is pressed down
+
+            audioSource.PlayOneShot(pickUpSound);
         }
+    }
+
 
         public GrabableObject DropItem()
         {

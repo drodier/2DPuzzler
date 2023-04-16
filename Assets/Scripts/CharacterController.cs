@@ -83,13 +83,13 @@ public class CharacterController : MonoBehaviour
         {
             if(transform.localScale.x == 1)
             {
-                heldItem.transform.position = transform.position + new Vector3(.3f + heldItem.transform.localScale.x/2, 0, 0);
+                heldItem.transform.position = transform.position + new Vector3(.2f + heldItem.GetComponent<SpriteRenderer>().bounds.size.x/2, 0, 0);
                 //heldItem.transform.localScale = new Vector3(0.1590151f, heldItem.transform.localScale.y, heldItem.transform.localScale.z);
                 heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             }
             else
             {
-                heldItem.transform.position = transform.position + new Vector3(-.3f - heldItem.transform.localScale.x/2, 0, 0);
+                heldItem.transform.position = transform.position + new Vector3(-.2f -  heldItem.GetComponent<SpriteRenderer>().bounds.size.x/2, 0, 0);
                 //heldItem.transform.localScale = new Vector3(-0.1590151f, heldItem.transform.localScale.y, heldItem.transform.localScale.z);
                 heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             }
@@ -151,29 +151,15 @@ public class CharacterController : MonoBehaviour
                 isJumping = false;
             }
 
-            if(Input.GetKeyUp(KeyCode.F) && IsHolding())
+            if(IsHolding())
             {
-                float grabDuration = Time.time - grabStartTime;
-                if(grabDuration > 1f) // If grab key is released after being held down for a certain duration
-                {
-                    Vector2 throwDirection = new Vector2(transform.localScale.x, 1f).normalized;
+                if(Input.GetKeyUp(KeyCode.R))
+                    heldItem.RotateObject();
 
-                    if(IsHolding())
-                    {
-                        float weightMultiplier = heldItem.GetWeightMultiplier();
-                        throwDirection *= new Vector2(weightMultiplier, 1f);
-                    }
-
-                    heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-                    heldItem.GetComponent<Rigidbody2D>().velocity = throwDirection * heldItem.throwForce;
-                    heldItem = null;
-
-                    audioSource.PlayOneShot(dropSound);
-                }
-                else // If grab key is released quickly, drop the held item
-                {
+                if(Input.GetKeyUp(KeyCode.F))
                     DropItem();
-                }
+                else if(Input.GetMouseButtonDown(0))
+                    heldItem.ThrowItem();
             }
 
         // Update animator parameters
@@ -200,25 +186,29 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    public GrabableObject DropItem()
+    {
+        GrabableObject dropped = null;
 
-        public GrabableObject DropItem()
+        if(!heldItem.IsLockedOut())
         {
-            GrabableObject dropped = null;
+            heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            dropped = heldItem;
+            heldItem = null;
 
-            if(!heldItem.IsLockedOut())
-            {
-                heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-                dropped = heldItem;
-                heldItem = null;
-
-                audioSource.PlayOneShot(dropSound);
-            }
-
-            return dropped;
+            audioSource.PlayOneShot(dropSound);
         }
 
-        public bool IsHolding()
-        {
-            return heldItem != null;
-        }
+        return dropped;
+    }
+
+    public bool IsHolding()
+    {
+        return heldItem != null;
+    }
+
+    public void PlayDropSound()
+    {
+        audioSource.PlayOneShot(dropSound);
+    }
 }

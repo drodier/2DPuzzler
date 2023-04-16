@@ -13,6 +13,7 @@ TagManager:
   - Checkpoint
   - TileMap
   - Receiver
+  - DropDownPlatform
   layers:
   - Default
   - TransparentFX

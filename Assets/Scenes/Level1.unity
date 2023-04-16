@@ -541,7 +541,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 4179bdd5091e0374fb36d76aa437eb70, type: 3}
     - target: {fileID: 4694274152950408071, guid: 6afa7cde7e46f4347b3b99099d414aa9, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4694274152950408071, guid: 6afa7cde7e46f4347b3b99099d414aa9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -622,7 +622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8751918574180735776, guid: e1dfe6e19b98e784eaa82102a0a3a4a1, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8751918574180735776, guid: e1dfe6e19b98e784eaa82102a0a3a4a1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1614,9 +1614,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a7f706c1a103247b11cb3513b72741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
-  canvasTransform: {fileID: 1129491255}
-  offset: {x: 81, y: -5}
+  imageToChange: {fileID: 0}
+  newColor: {r: 0, g: 0, b: 0, a: 0}
   pickupSound: {fileID: 8300000, guid: 483313d9f82a23f43ae54d8403bbc2b1, type: 3}
 --- !u!61 &314334230
 BoxCollider2D:
@@ -2675,6 +2674,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1072004480}
     m_Modifications:
+    - target: {fileID: 1851694851901098920, guid: a3556cdc7f59c4b46bbbd9af8407e4e9, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1851694851901098921, guid: a3556cdc7f59c4b46bbbd9af8407e4e9, type: 3}
       propertyPath: weight
       value: 4
@@ -2864,6 +2867,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCameraSpeed: 20
   camSpeed: 3
+  maxX: 0
+  minX: 0
+  maxY: 0
+  minY: 0
 --- !u!1 &526646347
 GameObject:
   m_ObjectHideFlags: 0
@@ -3605,6 +3612,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1072004480}
     m_Modifications:
+    - target: {fileID: 1851694851901098920, guid: a3556cdc7f59c4b46bbbd9af8407e4e9, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1851694851901098921, guid: a3556cdc7f59c4b46bbbd9af8407e4e9, type: 3}
       propertyPath: weight
       value: 3
@@ -38907,7 +38918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5118478247130861111, guid: 9e63a18c9dfef4040966feb0195b5a79, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5118478247130861111, guid: 9e63a18c9dfef4040966feb0195b5a79, type: 3}
       propertyPath: m_LocalPosition.x
@@ -39406,6 +39417,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1072004480}
     m_Modifications:
+    - target: {fileID: 1851694851901098920, guid: a3556cdc7f59c4b46bbbd9af8407e4e9, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1851694851901098921, guid: a3556cdc7f59c4b46bbbd9af8407e4e9, type: 3}
       propertyPath: weight
       value: 2
@@ -39779,9 +39794,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a7f706c1a103247b11cb3513b72741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
-  canvasTransform: {fileID: 1129491255}
-  offset: {x: 147, y: -5}
+  imageToChange: {fileID: 0}
+  newColor: {r: 0, g: 0, b: 0, a: 0}
   pickupSound: {fileID: 8300000, guid: 073e510b510290346bcdc08181364067, type: 3}
 --- !u!61 &1169789206
 BoxCollider2D:
@@ -41001,7 +41015,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4174881483628359586, guid: 7b17e972dc14edb4b9fb4674c68b7fe6, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4174881483628359586, guid: 7b17e972dc14edb4b9fb4674c68b7fe6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -41449,7 +41463,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1511428743
@@ -41548,6 +41562,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupLockout: 10
   weight: 1
+  throwForce: 10
+  facingDirection: Up
+  rotationSpeed: 3
 --- !u!1 &1617224319
 GameObject:
   m_ObjectHideFlags: 0
@@ -41579,9 +41596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a7f706c1a103247b11cb3513b72741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
-  canvasTransform: {fileID: 1129491255}
-  offset: {x: 115, y: -5}
+  imageToChange: {fileID: 0}
+  newColor: {r: 0, g: 0, b: 0, a: 0}
   pickupSound: {fileID: 8300000, guid: 483313d9f82a23f43ae54d8403bbc2b1, type: 3}
 --- !u!61 &1617224321
 BoxCollider2D:
@@ -42885,9 +42901,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a7f706c1a103247b11cb3513b72741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagePrefab: {fileID: 624339832352559954, guid: 96db04ffff10ff5478fd8b6826e2f458, type: 3}
-  canvasTransform: {fileID: 1129491255}
-  offset: {x: 46, y: -5}
+  imageToChange: {fileID: 0}
+  newColor: {r: 0, g: 0, b: 0, a: 0}
   pickupSound: {fileID: 8300000, guid: 483313d9f82a23f43ae54d8403bbc2b1, type: 3}
 --- !u!61 &2105756475
 BoxCollider2D:

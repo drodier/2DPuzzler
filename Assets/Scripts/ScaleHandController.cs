@@ -6,13 +6,15 @@ public class ScaleHandController : MonoBehaviour
 {
     [SerializeField] private GrabableObject heldItem;
 
-    [SerializeField]private int tryAction = 0;
+    [SerializeField] private int tryAction = 0;
+
+    [SerializeField] private SpriteRenderer childRenderer;
 
     void FixedUpdate()
     {
         if(heldItem != null)
         {
-            heldItem.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f + heldItem.transform.localScale.y/5, transform.position.z);
+            heldItem.transform.position = new Vector3(transform.position.x, (transform.position.y + GetComponent<SpriteRenderer>().bounds.size.y/2) + (heldItem.GetComponent<SpriteRenderer>().bounds.size.y/2), transform.position.z);
             heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
 
             transform.localPosition = new Vector3(transform.localPosition.x, -((float)heldItem.GetWeight())/10f, transform.localPosition.z);
@@ -32,23 +34,39 @@ public class ScaleHandController : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if(other.tag == "Player" && tryAction > 0)
+        if(other.tag == "Player")
         {
             CharacterController player = other.GetComponent<CharacterController>();
-            
+
+            if(tryAction > 0)
+            {
+                if(player.IsHolding())
+                {
+                    heldItem = player.DropItem();
+                    childRenderer.enabled = false;
+                }
+                else if(heldItem != null)
+                {
+                    GrabableObject temp = heldItem;
+                    heldItem = null;
+                    player.PickUpItem(temp);
+                    childRenderer.enabled = true;
+                }
+
+                tryAction = 0;
+            }
+
             if(player.IsHolding())
             {
-                heldItem = player.DropItem();
+                childRenderer.enabled = true;
             }
-            else if(heldItem != null)
-            {
-                GrabableObject temp = heldItem;
-                heldItem = null;
-                player.PickUpItem(temp);
-            }
-
-            tryAction = 0;
         }
-
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.tag == "Player")
+        {
+            childRenderer.enabled = false;
+        }
     }
 }

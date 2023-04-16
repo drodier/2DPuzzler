@@ -13612,6 +13612,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ReflectorUp
       objectReference: {fileID: 0}
+    - target: {fileID: 2624344402629755195, guid: a682c425db8334540ab824eafbc8ba08, type: 3}
+      propertyPath: weight
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2624344402629755199, guid: a682c425db8334540ab824eafbc8ba08, type: 3}
       propertyPath: m_RootOrder
       value: 1

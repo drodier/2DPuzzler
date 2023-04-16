@@ -24,7 +24,6 @@ public class CollectiblesController : MonoBehaviour
             if (!collectedItems.Contains(gameObject))
             {
                 totalBookCount++; // increase the total item count
-                Debug.Log("book increased to " + totalBookCount);
 
                 collectedItems.Add(gameObject); // add the collected item to the list
             }

@@ -20,7 +20,7 @@ public class GrabableObject : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if(other.gameObject.name == "GrabCheck" && Input.GetKey(KeyCode.F))
+        if(other.gameObject.name == "GrabCheck" && Input.GetButton("Interact"))
         {
             player.PickUpItem(this);
         }

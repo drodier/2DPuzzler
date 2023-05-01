@@ -9,7 +9,7 @@ public class DropDownPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isHoldingDown = Input.GetKey(KeyCode.S);
+        isHoldingDown = Input.GetAxis("Vertical") == -1;
     }
 
     void FixedUpdate()

@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 8751918573057305941}
   m_Layer: 0
   m_Name: RightHand
-  m_TagString: Untagged
+  m_TagString: ScaleHand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 8751918573618700450}
   m_Layer: 0
   m_Name: LeftHand
-  m_TagString: Untagged
+  m_TagString: ScaleHand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

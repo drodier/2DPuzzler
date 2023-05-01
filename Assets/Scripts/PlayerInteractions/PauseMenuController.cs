@@ -43,7 +43,7 @@ public class PauseMenuController : MonoBehaviour
     void Update()
     {
         // Check if the escape key is pressed and toggle pause state accordingly
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Pause"))
         {
             if (!isPaused)
             {

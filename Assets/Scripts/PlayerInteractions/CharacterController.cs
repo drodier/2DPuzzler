@@ -12,6 +12,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private Transform groundCheck; // Transform object for checking if character is on ground
     [SerializeField] private LayerMask wallLayer; // Layer mask for wall objects
 
+    [SerializeField] private ScaleHandController hoveredHand;
     private Rigidbody2D rb; // Character rigidbody component
     private Animator anim; // Character animator component
     private bool isGrounded; // Flag indicating if character is on ground
@@ -123,10 +124,10 @@ public class CharacterController : MonoBehaviour
         // Check if character is on ground
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
         bool isTouchingWall = Physics2D.Raycast(transform.position, transform.right, 0.5f, wallLayer) || Physics2D.Raycast(transform.position, -transform.right, 0.5f, wallLayer);
-        isSprinting = isGrounded ? Input.GetKey(KeyCode.LeftShift) : false;
+        isSprinting = isGrounded ? Input.GetButton("Sprint") : false;
 
         // Character jump input
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetButtonDown("Jump"))
         {
             if (isGrounded)
             {
@@ -153,18 +154,43 @@ public class CharacterController : MonoBehaviour
 
             if(IsHolding())
             {
-                if(Input.GetKeyUp(KeyCode.R))
+                if(Input.GetButtonUp("Rotate"))
                     heldItem.RotateObject();
 
-                if(Input.GetKeyUp(KeyCode.F))
+                if(Input.GetButtonUp("Interact") && hoveredHand == null)
+                {
                     DropItem();
-                else if(Input.GetMouseButtonDown(0))
+                }
+                else if(Input.GetButtonUp("Interact") && hoveredHand != null)
+                {
+                    hoveredHand.PlaceObject(DropItem());
+                }
+                else if(Input.GetButtonUp("Throw"))
+                {
                     heldItem.ThrowItem();
+                }
+            }
+            else if(hoveredHand != null)
+            {
+                if(Input.GetButtonUp("Interact") && !IsHolding() && hoveredHand.GetObjectWeight() != 0)
+                    heldItem = hoveredHand.DropObject();
             }
 
         // Update animator parameters
         anim.SetBool("IsMoving", isMoving);
         anim.SetBool("IsGrounded", isGrounded);
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if(other.tag == "ScaleHand")
+            hoveredHand = other.GetComponent<ScaleHandController>();
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.tag == "ScaleHand")
+            hoveredHand = null;
     }
 
     public void ChangeCurrentRoom(int newRoom)

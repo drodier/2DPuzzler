@@ -5,10 +5,9 @@ using UnityEngine;
 public class ScaleHandController : MonoBehaviour
 {
     [SerializeField] private GrabableObject heldItem;
-
-    [SerializeField] private int tryAction = 0;
-
     [SerializeField] private SpriteRenderer childRenderer;
+
+    private int tryAction = 0;
 
     void FixedUpdate()
     {
@@ -16,12 +15,6 @@ public class ScaleHandController : MonoBehaviour
         {
             heldItem.transform.position = new Vector3(transform.position.x, (transform.position.y + GetComponent<SpriteRenderer>().bounds.size.y/2) + (heldItem.GetComponent<SpriteRenderer>().bounds.size.y/2), transform.position.z);
             heldItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-
-            transform.localPosition = new Vector3(transform.localPosition.x, -((float)heldItem.GetWeight())/10f, transform.localPosition.z);
-        }
-        else
-        {
-            transform.localPosition = new Vector3(transform.localPosition.x, 0, transform.localPosition.z);
         }
 
         tryAction -= tryAction > 0 ? 1 : 0;
@@ -68,5 +61,13 @@ public class ScaleHandController : MonoBehaviour
         {
             childRenderer.enabled = false;
         }
+    }
+
+    public int GetObjectWeight()
+    {
+        if(heldItem != null)
+            return heldItem.GetWeight();
+
+        return 0;
     }
 }

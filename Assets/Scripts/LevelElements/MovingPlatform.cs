@@ -32,23 +32,26 @@ public class MovingPlatform : MonoBehaviour
 
     void Update()
     {
-        float journeyTime = Time.time - startTime;
-        float fracJourney = Mathf.PingPong(journeyTime * speed, journeyLength) / journeyLength;
-        transform.position = Vector3.Lerp(startPosition, endPosition, fracJourney);
-        if (fracJourney == 1)
+        if(GetComponent<ActivatableContent>().GetStatus())
         {
-            if (direction == PlatformDirection.UpDown)
+            float journeyTime = Time.time - startTime;
+            float fracJourney = Mathf.PingPong(journeyTime * speed, journeyLength) / journeyLength;
+            transform.position = Vector3.Lerp(startPosition, endPosition, fracJourney);
+            if (fracJourney == 1)
             {
-                endPosition = startPosition;
-                startPosition = transform.position;
+                if (direction == PlatformDirection.UpDown)
+                {
+                    endPosition = startPosition;
+                    startPosition = transform.position;
+                }
+                else
+                {
+                    startPosition = endPosition;
+                    endPosition = new Vector3(startPosition.x + distance, startPosition.y, startPosition.z);
+                    journeyLength = Vector3.Distance(startPosition, endPosition);
+                }
+                startTime = Time.time;
             }
-            else
-            {
-                startPosition = endPosition;
-                endPosition = new Vector3(startPosition.x + distance, startPosition.y, startPosition.z);
-                journeyLength = Vector3.Distance(startPosition, endPosition);
-            }
-            startTime = Time.time;
         }
     }
 

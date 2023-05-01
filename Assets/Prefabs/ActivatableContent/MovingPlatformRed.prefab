@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3712480437651357026}
   - component: {fileID: 1563705677736140889}
   - component: {fileID: 7868373313304287607}
+  - component: {fileID: 5292981158305669960}
   m_Layer: 6
   m_Name: MovingPlatformRed
   m_TagString: Untagged
@@ -149,3 +150,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.95, y: 0.4}
   m_EdgeRadius: 0
+--- !u!114 &5292981158305669960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3712480437651357025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e1c1d06ebd23f45b4f65ee3bd3235f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solved: 0

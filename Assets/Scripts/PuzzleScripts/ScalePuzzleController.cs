@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class ScalePuzzleController : MonoBehaviour
 {
-    [SerializeField] private GameObject[] hands;
-    [SerializeField] private int[] solution;
-    [SerializeField] private int[] value = {0,0,0,0};
+    [SerializeField] private ScaleHandController leftHand, rightHand;
+    [SerializeField] private int solution;
+    [SerializeField] private int value = 0;
+
+    private Vector3 leftDefaultPosition, rightDefaultPosition;
+
+    void Start()
+    {
+        leftDefaultPosition = leftHand.transform.position;
+        rightDefaultPosition = rightHand.transform.position;
+    }
 
     void FixedUpdate()
     {
-        for(int i=0; i<hands.Length; i++)
-        {
-            value[i] = Mathf.RoundToInt(hands[i].transform.localPosition.y * -10);
-        }
+        value = rightHand.GetObjectWeight() - leftHand.GetObjectWeight();
 
-        if(value[0] == solution[0] && value[1] == solution[1] && value[2] == solution[2] && value[3] == solution[3] && !GetComponent<PuzzleSolver>().GetStatus())
+        if(value == solution && !GetComponent<PuzzleSolver>().GetStatus())
             GetComponent<PuzzleSolver>().SolvePuzzle();
+
+        leftHand.transform.position = Vector3.MoveTowards(leftHand.transform.position, leftDefaultPosition + new Vector3(0, (float)value/10, 0), 0.01f);
+        rightHand.transform.position = Vector3.MoveTowards(rightHand.transform.position, rightDefaultPosition - new Vector3(0, (float)value/10, 0), 0.01f);
     }
 
 }

@@ -163,7 +163,9 @@ public class CharacterController : MonoBehaviour
                 }
                 else if(Input.GetButtonUp("Interact") && hoveredHand != null)
                 {
-                    hoveredHand.PlaceObject(DropItem());
+                    GrabableObject dropped = DropItem();
+                    if(dropped != null)
+                        hoveredHand.PlaceObject(dropped);
                 }
                 else if(Input.GetButtonUp("Throw"))
                 {
@@ -173,7 +175,11 @@ public class CharacterController : MonoBehaviour
             else if(hoveredHand != null)
             {
                 if(Input.GetButtonUp("Interact") && !IsHolding() && hoveredHand.GetObjectWeight() != 0)
-                    heldItem = hoveredHand.DropObject();
+                {
+                    GrabableObject tmp = hoveredHand.DropObject();
+                    if(tmp != null)
+                        heldItem = tmp;
+                }
             }
 
         // Update animator parameters

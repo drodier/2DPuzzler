@@ -23,8 +23,13 @@ public class ScalePuzzleController : MonoBehaviour
         if(value == solution && !GetComponent<PuzzleSolver>().GetStatus())
             GetComponent<PuzzleSolver>().SolvePuzzle();
 
-        leftHand.transform.position = Vector3.MoveTowards(leftHand.transform.position, leftDefaultPosition + new Vector3(0, (float)value/10, 0), 0.01f);
-        rightHand.transform.position = Vector3.MoveTowards(rightHand.transform.position, rightDefaultPosition - new Vector3(0, (float)value/10, 0), 0.01f);
+        Vector3 leftDesiredPosition = leftDefaultPosition + new Vector3(0, (float)value/10, 0);
+        leftHand.transform.position = Vector3.MoveTowards(leftHand.transform.position, leftDesiredPosition, 0.01f);
+        Vector3 rightDesiredPosition = rightDefaultPosition - new Vector3(0, (float)value/10, 0);
+        rightHand.transform.position = Vector3.MoveTowards(rightHand.transform.position, rightDesiredPosition, 0.01f);
+
+        leftHand.ChangeLock(Vector3.Distance(leftHand.transform.position, leftDesiredPosition) >= 0.05f);
+        rightHand.ChangeLock(Vector3.Distance(rightHand.transform.position, rightDesiredPosition) >= 0.05f);
     }
 
 }

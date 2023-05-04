@@ -9,6 +9,11 @@ public class ScaleHandController : MonoBehaviour
 
     private bool isLocked = false;
 
+    void Start()
+    {
+        heldItems = new Stack<GrabableObject>();
+    }
+
     void FixedUpdate()
     {
         if(heldItems.Count > 0)
@@ -56,18 +61,14 @@ public class ScaleHandController : MonoBehaviour
 
     public GrabableObject DropObject()
     {
-        GrabableObject ret = null;
-
         if(!isLocked)
         {
-            ret = heldItems.ToArray()[heldItems.Count - 1];
-
-            heldItems.Pop();
-
             childRenderer.enabled = heldItems.Count <= 0;
+
+            return heldItems.Pop();
         }
 
-        return ret;
+        return null;
     }
 
     public int GetObjectWeight()
